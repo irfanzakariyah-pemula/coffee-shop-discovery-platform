@@ -1,66 +1,336 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ngopikel - Coffee Shop Discovery Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div align="center">
+  
+  ![Ngopikel Logo](https://img.shields.io/badge/Ngopikel-Coffee%20Shop%20Discovery-coffee?style=for-the-badge)
+  
+  Platform penemuan coffee shop terbaik berdasarkan lokasi, fasilitas, atmosfer, harga, dan preferensi pengguna.
+  
+  ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat-square&logo=laravel)
+  ![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=flat-square&logo=php)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-06B6D4?style=flat-square&logo=tailwindcss)
+  ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=flat-square&logo=alpinedotjs)
 
-## About Laravel
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📖 Tentang Project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Ngopikel** adalah platform web yang memudahkan pengguna untuk menemukan coffee shop berdasarkan berbagai kriteria seperti:
 
-## Learning Laravel
+- 📍 **Lokasi & Jarak** - Temukan coffee shop terdekat dari lokasimu
+- ⭐ **Rating & Review** - Baca review dari pengguna lain
+- 💰 **Rentang Harga** - Filter berdasarkan budget
+- 🏢 **Fasilitas** - WiFi, Parking, Power Outlet, dll.
+- 🗺️ **Peta Interaktif** - Jelajahi coffee shop di peta dengan Leaflet.js
+- ❤️ **Favorit** - Simpan coffee shop favorit
+- 📝 **Ulasan** - Tulis dan bagikan pengalamanmu
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Project ini dibangun sebagai:
+1. **Portfolio Project** - Demonstrasi kemampuan full-stack development
+2. **Learning Project** - Belajar best practices Laravel, database design, security, dan testing
+3. **Production-Ready Demo** - Mengikuti standar industri untuk aplikasi production
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Tech Stack
 
-## Laravel Sponsors
+### Backend
+- **PHP 8.3+**
+- **Laravel 12+** - Full-stack PHP framework
+- **MySQL 8+ / SQLite** - Relational database
+- **Eloquent ORM** - Database abstraction
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Frontend
+- **Blade** - Laravel templating engine
+- **Tailwind CSS 4.x** - Utility-first CSS framework
+- **Alpine.js** - Minimal JavaScript framework
+- **Vite** - Modern build tool
 
-### Premium Partners
+### Maps
+- **Leaflet.js** - Interactive map library
+- **OpenStreetMap** - Free map data
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Development Tools
+- **Laravel Pint** - PHP code style fixer
+- **PHPUnit/Pest** - Testing framework
+- **Git** - Version control
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📦 Features
 
-## Code of Conduct
+### 🔐 Authentication & Authorization
+- [x] User registration & login
+- [x] Role-based access (Guest, User, Admin)
+- [ ] Password reset
+- [ ] Email verification
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### ☕ Coffee Shop Discovery
+- [ ] Browse & search coffee shops
+- [ ] Advanced filtering (price, rating, category, facilities)
+- [ ] Detailed coffee shop pages
+- [ ] Photo galleries
+- [ ] Menu & pricing
+- [ ] Opening hours
 
-## Security Vulnerabilities
+### 🗺️ Interactive Map
+- [ ] Leaflet.js + OpenStreetMap integration
+- [ ] Coffee shop markers
+- [ ] Distance calculation
+- [ ] User geolocation
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### ❤️ User Features
+- [ ] Favorites system
+- [ ] Write/edit/delete reviews
+- [ ] 1-5 star rating system
+- [ ] User profile
 
-## License
+### 👑 Admin Dashboard
+- [ ] Dashboard statistics
+- [ ] CRUD coffee shops
+- [ ] Manage categories & facilities
+- [ ] Manage promotions
+- [ ] Moderate reviews
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🛠️ Installation
+
+### Prerequisites
+
+Pastikan kamu sudah menginstall:
+- PHP 8.3 atau lebih tinggi
+- Composer
+- Node.js & NPM
+- MySQL 8+ atau SQLite
+- Git
+
+**Rekomendasi**: Gunakan [Laravel Herd](https://herd.laravel.com) (Windows/Mac) untuk setup yang lebih mudah.
+
+### Setup Steps
+
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/yourusername/ngopikel.git
+   cd ngopikel
+   ```
+
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Node dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Setup environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Configure database**
+   
+   Edit `.env` file:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=ngopikel
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+   
+   Or use SQLite (easier for development):
+   ```env
+   DB_CONNECTION=sqlite
+   # Comment out other DB_* lines
+   ```
+
+6. **Run migrations**
+   ```bash
+   php artisan migrate
+   ```
+
+7. **Seed database** (optional - untuk demo data)
+   ```bash
+   php artisan db:seed
+   ```
+
+8. **Build assets**
+   ```bash
+   npm run build
+   # or for development with hot reload:
+   npm run dev
+   ```
+
+9. **Start development server**
+   
+   Using Laravel Herd:
+   ```bash
+   herd link
+   # Access: http://coffee-shop-discovery-platform.test
+   ```
+   
+   Or using Artisan:
+   ```bash
+   php artisan serve
+   # Access: http://localhost:8000
+   ```
+
+---
+
+## 🧪 Testing
+
+Run tests:
+```bash
+php artisan test
+```
+
+Run specific test file:
+```bash
+php artisan test tests/Feature/CoffeeShopTest.php
+```
+
+Run with coverage:
+```bash
+php artisan test --coverage
+```
+
+---
+
+## 📁 Project Structure
+
+```
+ngopikel/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/      # Controllers
+│   │   ├── Requests/         # Form validation
+│   │   └── Middleware/       # Custom middleware
+│   ├── Models/               # Eloquent models
+│   ├── Policies/             # Authorization policies
+│   └── Services/             # Business logic
+│
+├── database/
+│   ├── migrations/           # Database migrations
+│   ├── seeders/             # Database seeders
+│   └── factories/           # Model factories
+│
+├── resources/
+│   ├── views/               # Blade templates
+│   ├── css/                 # Styles
+│   └── js/                  # JavaScript
+│
+├── routes/
+│   ├── web.php              # Web routes
+│   └── api.php              # API routes
+│
+├── tests/
+│   ├── Feature/             # Feature tests
+│   └── Unit/                # Unit tests
+│
+└── public/                  # Public assets
+```
+
+---
+
+## 🔒 Security
+
+This application follows security best practices:
+
+- ✅ **SQL Injection Prevention** - Using Eloquent ORM & parameterized queries
+- ✅ **XSS Protection** - Blade escaping & input sanitization
+- ✅ **CSRF Protection** - Laravel CSRF middleware enabled
+- ✅ **Mass Assignment Protection** - Model `$fillable` attributes
+- ✅ **Password Hashing** - Bcrypt hashing
+- ✅ **Authorization** - Policies & Gates
+- ✅ **Rate Limiting** - Throttle middleware on sensitive endpoints
+- ✅ **File Upload Validation** - MIME type, size, extension checks
+- ✅ **Secure Session** - HTTP-only cookies
+
+See [docs/security.md](docs/security.md) for detailed security documentation.
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1: Foundation ✅
+- [x] Project setup
+- [x] Basic layout & navigation
+- [x] Database design
+- [ ] Authentication system
+
+### Phase 2: Core Features (In Progress)
+- [ ] Coffee shop CRUD
+- [ ] Search & filtering
+- [ ] Detail pages
+- [ ] Map integration
+
+### Phase 3: User Features
+- [ ] Favorites
+- [ ] Reviews & ratings
+- [ ] User profile
+
+### Phase 4: Admin Features
+- [ ] Admin dashboard
+- [ ] Content management
+- [ ] Review moderation
+
+### Phase 5: Polish & Deploy
+- [ ] Performance optimization
+- [ ] Testing coverage
+- [ ] Documentation
+- [ ] Deployment
+
+---
+
+## 🤝 Contributing
+
+This is a learning/portfolio project, but suggestions and feedback are welcome!
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Developer
+
+**Your Name**
+- Portfolio: [your-portfolio.com](https://your-portfolio.com)
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+
+---
+
+## 🙏 Acknowledgments
+
+- Laravel Framework
+- Tailwind CSS
+- Alpine.js
+- Leaflet.js & OpenStreetMap
+- Laravel Herd
+- All open-source contributors
+
+---
+
+<div align="center">
+  
+  **Built with ❤️ and ☕ by [Your Name]**
+  
+  ⭐ Star this repo if you find it helpful!
+  
+</div>
