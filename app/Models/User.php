@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'avatar',
     ];
 
     /**
@@ -44,5 +46,48 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * User has many reviews
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
+     * User has many favorites
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    /**
+     * User's favorite coffee shops (many-to-many through favorites)
+     */
+    public function favoriteCoffeeShops()
+    {
+        return $this->belongsToMany(CoffeeShop::class, 'favorites')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Check if user is admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user has favorited a coffee shop
+     */
+    public function hasFavorited(CoffeeShop $coffeeShop): bool
+    {
+        return $this->favorites()
+                    ->where('coffee_shop_id', $coffeeShop->id)
+                    ->exists();
     }
 }
