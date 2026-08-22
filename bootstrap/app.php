@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\IsAdmin::class,
         ]);
+        
+        // Add security headers to all web routes
+        $middleware->web(append: [
+            \App\Http\Middleware\SecurityHeaders::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
