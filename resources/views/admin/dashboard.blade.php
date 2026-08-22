@@ -80,7 +80,7 @@
                 <h2 class="text-xl font-semibold text-gray-900">Quick Actions</h2>
             </div>
             <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="#" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                <a href="{{ route('admin.coffee-shops.create') }}" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
                     <svg class="w-10 h-10 text-coffee-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                     </svg>
@@ -90,7 +90,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                <a href="{{ route('admin.coffee-shops.index') }}" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
                     <svg class="w-10 h-10 text-coffee-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
