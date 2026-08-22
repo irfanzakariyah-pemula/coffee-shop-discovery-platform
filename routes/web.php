@@ -46,6 +46,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/favorites/{coffeeShop}/toggle', [\App\Http\Controllers\FavoriteController::class, 'toggle'])->name('favorites.toggle');
     Route::post('/favorites/{coffeeShop}', [\App\Http\Controllers\FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('/favorites/{coffeeShop}', [\App\Http\Controllers\FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    
+    // Reviews
+    Route::get('/my-reviews', [\App\Http\Controllers\ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/coffee-shops/{coffeeShop}/reviews/create', [\App\Http\Controllers\ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/coffee-shops/{coffeeShop}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews/{review}/edit', [\App\Http\Controllers\ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::put('/reviews/{review}', [\App\Http\Controllers\ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}', [\App\Http\Controllers\ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 // Admin Routes

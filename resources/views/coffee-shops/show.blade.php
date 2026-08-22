@@ -138,9 +138,22 @@
                                 </span>
                                 <span x-show="loading">⏳ Memproses...</span>
                             </button>
-                            <button class="w-full border-2 border-coffee-600 text-coffee-600 py-3 rounded-lg font-semibold hover:bg-coffee-50 transition">
-                                ⭐ Tulis Ulasan
-                            </button>
+                            
+                            @php
+                                $userReview = auth()->user()->reviews()->where('coffee_shop_id', $coffeeShop->id)->first();
+                            @endphp
+                            
+                            @if($userReview)
+                                <a href="{{ route('reviews.edit', $userReview) }}" 
+                                   class="block w-full border-2 border-coffee-600 text-coffee-600 py-3 rounded-lg font-semibold text-center hover:bg-coffee-50 transition">
+                                    ✏️ Edit Ulasan Anda
+                                </a>
+                            @else
+                                <a href="{{ route('reviews.create', $coffeeShop) }}" 
+                                   class="block w-full border-2 border-coffee-600 text-coffee-600 py-3 rounded-lg font-semibold text-center hover:bg-coffee-50 transition">
+                                    ⭐ Tulis Ulasan
+                                </a>
+                            @endif
                         @else
                             <a href="{{ route('login') }}" class="block w-full bg-coffee-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-coffee-700 transition">
                                 Login untuk Favorit & Review
