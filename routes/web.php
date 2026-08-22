@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MapController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -14,6 +15,15 @@ Route::get('/', function () {
 // Coffee Shops (Public)
 Route::get('/coffee-shops', [CoffeeShopController::class, 'index'])->name('coffee-shops.index');
 Route::get('/coffee-shops/{slug}', [CoffeeShopController::class, 'show'])->name('coffee-shops.show');
+
+// Map
+Route::get('/map', [\App\Http\Controllers\MapPageController::class, 'index'])->name('map');
+
+// Map API Routes
+Route::prefix('api')->name('api.')->group(function () {
+    Route::get('/map/coffee-shops', [MapController::class, 'coffeeShops'])->name('map.coffee-shops');
+    Route::post('/map/nearby', [MapController::class, 'nearby'])->name('map.nearby');
+});
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {
