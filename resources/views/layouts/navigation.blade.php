@@ -24,14 +24,7 @@
                 </a>
                 
                 <!-- Auth Links -->
-                @guest
-                    <a href="{{ url('/login') }}" class="text-gray-700 hover:text-coffee-600 px-3 py-2 text-sm font-medium">
-                        Masuk
-                    </a>
-                    <a href="{{ url('/register') }}" class="bg-coffee-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-coffee-700 transition">
-                        Daftar
-                    </a>
-                @else
+                @auth
                     <a href="{{ url('/favorites') }}" class="text-gray-700 hover:text-coffee-600 px-3 py-2 text-sm font-medium relative">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -39,10 +32,10 @@
                     </a>
                     <div class="relative" x-data="{ profileOpen: false }">
                         <button @click="profileOpen = !profileOpen" class="flex items-center space-x-2 text-gray-700 hover:text-coffee-600">
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'User') }}&background=c97d3c&color=fff" 
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=c97d3c&color=fff" 
                                  alt="Profile" 
                                  class="w-8 h-8 rounded-full">
-                            <span class="text-sm font-medium">{{ auth()->user()->name ?? 'User' }}</span>
+                            <span class="text-sm font-medium">{{ auth()->user()->name }}</span>
                         </button>
                         
                         <!-- Dropdown -->
@@ -56,14 +49,14 @@
                             <a href="{{ url('/my-reviews') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Ulasan Saya
                             </a>
-                            @if(auth()->check() && auth()->user()->role === 'admin')
+                            @if(auth()->user()->isAdmin())
                                 <hr class="my-2">
-                                <a href="{{ url('/admin/dashboard') }}" class="block px-4 py-2 text-sm text-coffee-600 hover:bg-gray-100">
+                                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-coffee-600 hover:bg-gray-100">
                                     Admin Dashboard
                                 </a>
                             @endif
                             <hr class="my-2">
-                            <form method="POST" action="{{ url('/logout') }}">
+                            <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
                                     Keluar
@@ -71,7 +64,14 @@
                             </form>
                         </div>
                     </div>
-                @endguest
+                @else
+                    <a href="{{ route('login') }}" class="text-gray-700 hover:text-coffee-600 px-3 py-2 text-sm font-medium">
+                        Masuk
+                    </a>
+                    <a href="{{ route('register') }}" class="bg-coffee-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-coffee-700 transition">
+                        Daftar
+                    </a>
+                @endauth
             </div>
 
             <!-- Mobile Menu Button -->
