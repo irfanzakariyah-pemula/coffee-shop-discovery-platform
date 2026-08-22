@@ -12,113 +12,199 @@
         </div>
 
         <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <!-- Total Coffee Shops -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-gray-600">Total Coffee Shops</p>
-                        <p class="text-3xl font-bold text-gray-900">{{ \App\Models\CoffeeShop::count() }}</p>
+                        <p class="text-sm text-gray-600">Coffee Shops</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $stats['total_coffee_shops'] }}</p>
+                        <p class="text-xs text-green-600 mt-1">{{ $stats['active_coffee_shops'] }} aktif</p>
                     </div>
-                    <div class="bg-coffee-100 p-3 rounded-full">
-                        <svg class="w-8 h-8 text-coffee-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M2 21h19v-3H2v3zM20 8H4V6h16v2zM3 12v2c0 1.656 1.344 3 3 3h12c1.656 0 3-1.344 3-3v-2H3zm0-3h18V7H3v2z"/>
-                        </svg>
-                    </div>
+                    <div class="bg-coffee-100 p-3 rounded-full">☕</div>
                 </div>
             </div>
 
-            <!-- Total Users -->
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm text-gray-600">Total Users</p>
-                        <p class="text-3xl font-bold text-gray-900">{{ \App\Models\User::where('role', 'user')->count() }}</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $stats['total_users'] }}</p>
+                        <p class="text-xs text-gray-500 mt-1">Registered users</p>
                     </div>
-                    <div class="bg-blue-100 p-3 rounded-full">
-                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                    </div>
+                    <div class="bg-blue-100 p-3 rounded-full">👥</div>
                 </div>
             </div>
 
-            <!-- Total Reviews -->
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm text-gray-600">Total Reviews</p>
-                        <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Review::count() }}</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $stats['total_reviews'] }}</p>
+                        <p class="text-xs text-gray-500 mt-1">Avg: ⭐ {{ $stats['avg_rating'] }}</p>
                     </div>
-                    <div class="bg-yellow-100 p-3 rounded-full">
-                        <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-full">⭐</div>
                 </div>
             </div>
 
-            <!-- Total Favorites -->
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-sm text-gray-600">Total Favorites</p>
-                        <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Favorite::count() }}</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $stats['total_favorites'] }}</p>
+                        <p class="text-xs text-gray-500 mt-1">User favorites</p>
                     </div>
-                    <div class="bg-red-100 p-3 rounded-full">
-                        <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                    </div>
+                    <div class="bg-red-100 p-3 rounded-full">❤️</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Popular Coffee Shops -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-900">🔥 Popular Coffee Shops</h2>
+                </div>
+                <div class="p-6">
+                    @forelse($popular_shops as $shop)
+                        <div class="flex items-center justify-between py-3 border-b last:border-0">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-coffee-200 to-coffee-400 rounded-lg"></div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">{{ $shop->name }}</p>
+                                    <p class="text-sm text-gray-500">{{ $shop->city }}</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-semibold text-coffee-600">{{ $shop->reviews_count }} reviews</span>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 text-center py-4">Belum ada data</p>
+                    @endforelse
+                </div>
+            </div>
+
+            <!-- Top Reviewers -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-900">🏆 Top Reviewers</h2>
+                </div>
+                <div class="p-6">
+                    @forelse($top_reviewers as $reviewer)
+                        <div class="flex items-center justify-between py-3 border-b last:border-0">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($reviewer->name) }}&background=random" 
+                                     class="w-10 h-10 rounded-full" alt="{{ $reviewer->name }}">
+                                <div>
+                                    <p class="font-semibold text-gray-900">{{ $reviewer->name }}</p>
+                                    <p class="text-sm text-gray-500">{{ $reviewer->email }}</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-semibold text-yellow-600">{{ $reviewer->reviews_count }} reviews</span>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 text-center py-4">Belum ada data</p>
+                    @endforelse
                 </div>
             </div>
         </div>
 
         <!-- Quick Actions -->
-        <div class="bg-white rounded-lg shadow">
+        <div class="bg-white rounded-lg shadow mb-8">
             <div class="px-6 py-4 border-b border-gray-200">
-                <h2 class="text-xl font-semibold text-gray-900">Quick Actions</h2>
+                <h2 class="text-xl font-semibold text-gray-900">⚡ Quick Actions</h2>
             </div>
-            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="{{ route('admin.coffee-shops.create') }}" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
-                    <svg class="w-10 h-10 text-coffee-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                    </svg>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <a href="{{ route('admin.coffee-shops.create') }}" 
+                   class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                    <div class="text-3xl mr-4">➕</div>
                     <div>
                         <p class="font-semibold text-gray-900">Add Coffee Shop</p>
-                        <p class="text-sm text-gray-500">Create new coffee shop</p>
+                        <p class="text-sm text-gray-500">Create new</p>
                     </div>
                 </a>
 
-                <a href="{{ route('admin.coffee-shops.index') }}" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
-                    <svg class="w-10 h-10 text-coffee-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                    </svg>
+                <a href="{{ route('admin.coffee-shops.index') }}" 
+                   class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                    <div class="text-3xl mr-4">📋</div>
                     <div>
-                        <p class="font-semibold text-gray-900">Manage Coffee Shops</p>
-                        <p class="text-sm text-gray-500">Edit or delete shops</p>
+                        <p class="font-semibold text-gray-900">Manage Shops</p>
+                        <p class="text-sm text-gray-500">Edit or delete</p>
                     </div>
                 </a>
 
-                <a href="#" class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
-                    <svg class="w-10 h-10 text-coffee-600 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                    </svg>
+                <a href="{{ route('admin.users.index') }}" 
+                   class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                    <div class="text-3xl mr-4">👥</div>
                     <div>
-                        <p class="font-semibold text-gray-900">Moderate Reviews</p>
-                        <p class="text-sm text-gray-500">Review moderation</p>
+                        <p class="font-semibold text-gray-900">Manage Users</p>
+                        <p class="text-sm text-gray-500">View all users</p>
+                    </div>
+                </a>
+
+                <a href="{{ route('coffee-shops.index') }}" target="_blank"
+                   class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-coffee-500 transition">
+                    <div class="text-3xl mr-4">🌐</div>
+                    <div>
+                        <p class="font-semibold text-gray-900">View Site</p>
+                        <p class="text-sm text-gray-500">Public view</p>
                     </div>
                 </a>
             </div>
         </div>
 
-        <!-- Recent Activity (Coming Soon) -->
-        <div class="mt-8 bg-white rounded-lg shadow">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h2 class="text-xl font-semibold text-gray-900">Recent Activity</h2>
+        <!-- Recent Activity -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Recent Reviews -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-900">💬 Recent Reviews</h2>
+                </div>
+                <div class="p-6">
+                    @forelse($recent_reviews as $review)
+                        <div class="py-3 border-b last:border-0">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <p class="font-semibold text-gray-900">{{ $review->user->name }}</p>
+                                    <p class="text-sm text-gray-600">{{ $review->coffeeShop->name }}</p>
+                                    @if($review->comment)
+                                        <p class="text-sm text-gray-700 mt-1 line-clamp-2">{{ $review->comment }}</p>
+                                    @endif
+                                </div>
+                                <div class="flex items-center ml-3">
+                                    @for($i = 1; $i <= $review->rating; $i++)
+                                        ⭐
+                                    @endfor
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">{{ $review->created_at->diffForHumans() }}</p>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 text-center py-4">Belum ada review</p>
+                    @endforelse
+                </div>
             </div>
-            <div class="p-6 text-center text-gray-500">
-                <p>Feature coming soon in Phase 4...</p>
+
+            <!-- Recent Users -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-900">👤 Recent Users</h2>
+                </div>
+                <div class="p-6">
+                    @forelse($recent_users as $user)
+                        <div class="flex items-center justify-between py-3 border-b last:border-0">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=random" 
+                                     class="w-10 h-10 rounded-full" alt="{{ $user->name }}">
+                                <div>
+                                    <p class="font-semibold text-gray-900">{{ $user->name }}</p>
+                                    <p class="text-sm text-gray-500">{{ $user->email }}</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-500">{{ $user->created_at->diffForHumans() }}</span>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 text-center py-4">Belum ada user baru</p>
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>

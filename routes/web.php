@@ -58,9 +58,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     
     // Coffee Shops Management
     Route::resource('coffee-shops', \App\Http\Controllers\Admin\CoffeeShopController::class);
@@ -68,4 +66,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Nested: Menus & Promotions
     Route::resource('coffee-shops.menus', \App\Http\Controllers\Admin\MenuController::class)->except(['show']);
     Route::resource('coffee-shops.promotions', \App\Http\Controllers\Admin\PromotionController::class)->except(['show']);
+    
+    // User Management
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->only(['index', 'show', 'destroy']);
+    Route::post('/users/{user}/toggle-role', [\App\Http\Controllers\Admin\UserController::class, 'toggleRole'])->name('users.toggle-role');
 });
