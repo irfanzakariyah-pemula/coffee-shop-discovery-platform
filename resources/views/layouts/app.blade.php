@@ -15,11 +15,89 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
+    
+    <style>
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hover Scale */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button Ripple Effect */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-left-color: currentColor;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Slide Up */
+        .slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <div class="min-h-screen">
         <!-- Navigation -->
         @include('layouts.navigation')
+
+        <!-- Toast Notifications -->
+        <x-toast />
 
         <!-- Flash Messages -->
         @if(session('success'))
@@ -69,6 +147,24 @@
 
         <!-- Footer -->
         @include('layouts.footer')
+        
+        <!-- Scroll to Top Button -->
+        <button @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                x-data="{ show: false }"
+                x-show="show"
+                @scroll.window="show = window.pageYOffset > 300"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-0"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="fixed bottom-8 right-8 bg-coffee-600 text-white p-3 rounded-full shadow-lg hover:bg-coffee-700 transition z-40"
+                style="display: none;">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+            </svg>
+        </button>
     </div>
 
     @stack('scripts')
