@@ -76,6 +76,8 @@
                             </td>
                             <td class="px-6 py-4 text-right text-sm font-medium space-x-2">
                                 <a href="{{ route('coffee-shops.show', $shop->slug) }}" target="_blank" class="text-blue-600 hover:text-blue-900">Lihat</a>
+                                <a href="{{ route('admin.coffee-shops.menus.index', $shop) }}" class="text-purple-600 hover:text-purple-900">Menu</a>
+                                <a href="{{ route('admin.coffee-shops.promotions.index', $shop) }}" class="text-green-600 hover:text-green-900">Promo</a>
                                 <a href="{{ route('admin.coffee-shops.edit', $shop) }}" class="text-coffee-600 hover:text-coffee-900">Edit</a>
                                 <form action="{{ route('admin.coffee-shops.destroy', $shop) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus {{ $shop->name }}?')">
                                     @csrf

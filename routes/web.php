@@ -64,4 +64,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Coffee Shops Management
     Route::resource('coffee-shops', \App\Http\Controllers\Admin\CoffeeShopController::class);
+    
+    // Nested: Menus & Promotions
+    Route::resource('coffee-shops.menus', \App\Http\Controllers\Admin\MenuController::class)->except(['show']);
+    Route::resource('coffee-shops.promotions', \App\Http\Controllers\Admin\PromotionController::class)->except(['show']);
 });
