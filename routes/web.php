@@ -3,12 +3,17 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CoffeeShopController;
 use Illuminate\Support\Facades\Route;
 
 // Home
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+// Coffee Shops (Public)
+Route::get('/coffee-shops', [CoffeeShopController::class, 'index'])->name('coffee-shops.index');
+Route::get('/coffee-shops/{slug}', [CoffeeShopController::class, 'show'])->name('coffee-shops.show');
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {
@@ -32,4 +37,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    
+    // Coffee Shops Management
+    Route::resource('coffee-shops', \App\Http\Controllers\Admin\CoffeeShopController::class);
 });
