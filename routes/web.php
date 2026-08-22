@@ -40,6 +40,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     // Logout
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
+    
+    // Favorites
+    Route::get('/favorites', [\App\Http\Controllers\FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites/{coffeeShop}/toggle', [\App\Http\Controllers\FavoriteController::class, 'toggle'])->name('favorites.toggle');
+    Route::post('/favorites/{coffeeShop}', [\App\Http\Controllers\FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('/favorites/{coffeeShop}', [\App\Http\Controllers\FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 
 // Admin Routes

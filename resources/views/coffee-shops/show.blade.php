@@ -127,10 +127,16 @@
                     @endif
 
                     <!-- Actions -->
-                    <div class="space-y-3 pt-4 border-t">
+                    <div class="space-y-3 pt-4 border-t" x-data="favoriteButton({{ $isFavorited ? 'true' : 'false' }}, {{ $coffeeShop->id }})">
                         @auth
-                            <button class="w-full bg-coffee-600 text-white py-3 rounded-lg font-semibold hover:bg-coffee-700 transition">
-                                {{ $isFavorited ? '❤️ Favorit' : '🤍 Tambah ke Favorit' }}
+                            <button @click="toggleFavorite()" 
+                                :disabled="loading"
+                                :class="isFavorited ? 'bg-red-600 hover:bg-red-700' : 'bg-coffee-600 hover:bg-coffee-700'"
+                                class="w-full text-white py-3 rounded-lg font-semibold transition disabled:opacity-50">
+                                <span x-show="!loading">
+                                    <span x-text="isFavorited ? '❤️ Favorit' : '🤍 Tambah ke Favorit'"></span>
+                                </span>
+                                <span x-show="loading">⏳ Memproses...</span>
                             </button>
                             <button class="w-full border-2 border-coffee-600 text-coffee-600 py-3 rounded-lg font-semibold hover:bg-coffee-50 transition">
                                 ⭐ Tulis Ulasan
@@ -158,4 +164,60 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+function favoriteButton(initialFavorited, coffeeShopId) {
+    return {
+        isFavorited: initialFavorited,
+        loading: false,
+
+        async toggleFavorite() {
+            if (this.loading) return;
+
+            this.loading = true;
+
+            try {
+                const response = await fetch(`/favorites/${coffeeShopId}/toggle`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    this.isFavorited = data.is_favorited;
+                    
+                    // Show toast notification (optional)
+                    this.showNotification(data.message);
+                } else {
+                    alert('Gagal memproses favorit. Silakan coba lagi.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan. Silakan coba lagi.');
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        showNotification(message) {
+            // Simple notification - you can enhance this
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    }
+}
+</script>
+@endpush
 @endsection
