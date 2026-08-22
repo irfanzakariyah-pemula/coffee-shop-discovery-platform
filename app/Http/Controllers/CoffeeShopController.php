@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\CoffeeShop;
 use App\Models\Facility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class CoffeeShopController extends Controller
@@ -68,13 +69,21 @@ class CoffeeShopController extends Controller
         // Paginate results
         $coffeeShops = $query->paginate(12)->withQueryString();
 
-        // Get filter options
-        $categories = Category::all();
-        $facilities = Facility::all();
-        $cities = CoffeeShop::select('city')
-            ->distinct()
-            ->orderBy('city')
-            ->pluck('city');
+        // Get filter options (cached)
+        $categories = Cache::remember('categories_all', 3600, function () {
+            return Category::all();
+        });
+        
+        $facilities = Cache::remember('facilities_all', 3600, function () {
+            return Facility::all();
+        });
+        
+        $cities = Cache::remember('cities_list', 1800, function () {
+            return CoffeeShop::select('city')
+                ->distinct()
+                ->orderBy('city')
+                ->pluck('city');
+        });
 
         return view('coffee-shops.index', compact(
             'coffeeShops',
