@@ -4,24 +4,24 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-coffee-50 py-24">
+<section class="relative overflow-hidden bg-gradient-to-br from-coffee-50 via-white to-primary-50 py-24">
     <!-- Decorative Elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-coffee-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-coffee-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center animate-fade-in">
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-soft mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-soft mb-6 border border-coffee-200">
                 <x-icon name="sparkles" class="w-4 h-4 text-coffee-600" />
                 <span class="text-sm font-medium text-gray-700">Platform Terpercaya untuk Pencinta Kopi</span>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Temukan Coffee Shop<br>
-                <span class="bg-gradient-to-r from-coffee-600 to-primary-600 bg-clip-text text-transparent">Sempurna Untukmu</span>
+                <span class="bg-gradient-to-r from-coffee-600 via-coffee-700 to-primary-600 bg-clip-text text-transparent">Sempurna Untukmu</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Jelajahi coffee shop terbaik di sekitarmu dengan mudah. Temukan berdasarkan lokasi, fasilitas, atmosfer, harga, dan rating.
@@ -30,7 +30,7 @@
             <!-- Search Bar -->
             <div class="max-w-2xl mx-auto animate-slide-up">
                 <form action="{{ url('/coffee-shops') }}" method="GET" class="relative">
-                    <div class="flex gap-3 shadow-soft-lg rounded-2xl bg-white p-2">
+                    <div class="flex gap-3 shadow-soft-lg rounded-2xl bg-white p-2 border-2 border-coffee-100">
                         <div class="flex-1 relative">
                             <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
                                 <x-icon name="search" class="w-5 h-5 text-gray-400" />
@@ -40,7 +40,7 @@
                                    placeholder="Cari coffee shop atau lokasi..." 
                                    class="w-full pl-12 pr-4 py-4 rounded-xl border-0 focus:ring-2 focus:ring-coffee-500 focus:outline-none text-gray-900 placeholder-gray-400">
                         </div>
-                        <button type="submit" class="px-8 py-4 bg-gradient-to-r from-coffee-600 to-coffee-700 text-white rounded-xl font-semibold hover:from-coffee-700 hover:to-coffee-800 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl">
+                        <button type="submit" class="px-8 py-4 bg-gradient-to-r from-coffee-600 via-coffee-700 to-coffee-800 text-white rounded-xl font-semibold hover:from-coffee-700 hover:via-coffee-800 hover:to-coffee-900 transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl">
                             <span>Cari</span>
                             <x-icon name="arrow-right" class="w-5 h-5" />
                         </button>
@@ -50,19 +50,19 @@
 
             <!-- Quick Filters -->
             <div class="mt-8 flex flex-wrap justify-center gap-3">
-                <a href="{{ url('/coffee-shops?facilities=1') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
+                <a href="{{ url('/coffee-shops?facilities=1') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:bg-coffee-50 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
                     <x-icon name="wifi" class="w-4 h-4" />
                     <span>WiFi Gratis</span>
                 </a>
-                <a href="{{ url('/coffee-shops?facilities=4') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
+                <a href="{{ url('/coffee-shops?facilities=4') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:bg-coffee-50 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
                     <x-icon name="truck" class="w-4 h-4" />
                     <span>Parkir</span>
                 </a>
-                <a href="{{ url('/coffee-shops?facilities=6') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
+                <a href="{{ url('/coffee-shops?facilities=6') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:bg-coffee-50 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
                     <x-icon name="sun" class="w-4 h-4" />
                     <span>Outdoor</span>
                 </a>
-                <a href="{{ url('/coffee-shops?facilities=2') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
+                <a href="{{ url('/coffee-shops?facilities=2') }}" class="group px-5 py-2.5 bg-white rounded-full text-sm font-medium text-gray-700 border-2 border-gray-200 hover:border-coffee-500 hover:text-coffee-600 hover:bg-coffee-50 hover:shadow-soft transition-all duration-200 flex items-center gap-2">
                     <x-icon name="bolt" class="w-4 h-4" />
                     <span>Power Outlet</span>
                 </a>
@@ -72,35 +72,35 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-16 bg-white border-y">
+<section class="py-16 bg-white border-y border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-coffee-100 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                    <x-icon name="store" class="w-6 h-6 text-coffee-600" />
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-coffee-100 to-coffee-200 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+                    <x-icon name="store" class="w-6 h-6 text-coffee-700" />
                 </div>
-                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-coffee-600 to-coffee-800 bg-clip-text text-transparent mb-2">150+</div>
+                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-coffee-600 via-coffee-700 to-coffee-800 bg-clip-text text-transparent mb-2">150+</div>
                 <div class="text-gray-600 font-medium">Coffee Shops</div>
             </div>
             <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary-100 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                    <x-icon name="star" class="w-6 h-6 text-primary-600" />
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+                    <x-icon name="star" class="w-6 h-6 text-primary-700" />
                 </div>
-                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-coffee-600 bg-clip-text text-transparent mb-2">1,200+</div>
+                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 via-coffee-600 to-coffee-700 bg-clip-text text-transparent mb-2">1,200+</div>
                 <div class="text-gray-600 font-medium">Reviews</div>
             </div>
             <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-coffee-100 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                    <x-icon name="users" class="w-6 h-6 text-coffee-600" />
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-coffee-100 to-coffee-200 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+                    <x-icon name="users" class="w-6 h-6 text-coffee-700" />
                 </div>
-                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-coffee-600 to-coffee-800 bg-clip-text text-transparent mb-2">500+</div>
+                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-coffee-600 via-coffee-700 to-coffee-800 bg-clip-text text-transparent mb-2">500+</div>
                 <div class="text-gray-600 font-medium">Active Users</div>
             </div>
             <div class="text-center group">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary-100 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                    <x-icon name="map" class="w-6 h-6 text-primary-600" />
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl mb-3 group-hover:scale-110 transition-transform">
+                    <x-icon name="map" class="w-6 h-6 text-primary-700" />
                 </div>
-                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-coffee-600 bg-clip-text text-transparent mb-2">10+</div>
+                <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 via-coffee-600 to-coffee-700 bg-clip-text text-transparent mb-2">10+</div>
                 <div class="text-gray-600 font-medium">Cities</div>
             </div>
         </div>
@@ -191,8 +191,8 @@
 
 <!-- CTA Section -->
 <section class="relative py-24 overflow-hidden">
-    <!-- Gradient Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-coffee-600 via-coffee-700 to-primary-800"></div>
+    <!-- Gradient Background dengan Red Theme -->
+    <div class="absolute inset-0 bg-gradient-to-br from-coffee-600 via-coffee-700 to-coffee-900"></div>
     
     <!-- Pattern Overlay -->
     <div class="absolute inset-0 opacity-10">

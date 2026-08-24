@@ -4,10 +4,10 @@
             <!-- Logo & Brand -->
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 bg-gradient-to-br from-coffee-600 to-coffee-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+                    <div class="w-10 h-10 bg-gradient-to-br from-coffee-600 via-coffee-700 to-coffee-800 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
                         <x-icon name="coffee" class="w-6 h-6 text-white" />
                     </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-coffee-700 to-coffee-900 bg-clip-text text-transparent">Ngopikel</span>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-coffee-700 via-coffee-800 to-coffee-900 bg-clip-text text-transparent">Ngopikel</span>
                 </a>
             </div>
 
