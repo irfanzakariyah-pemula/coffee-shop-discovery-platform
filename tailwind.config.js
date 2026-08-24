@@ -5,6 +5,12 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
+  safelist: [
+    // Force generate all coffee & primary color variants
+    {
+      pattern: /(bg|text|border|from|via|to|ring)-(coffee|primary|brown)-(50|100|200|300|400|500|600|700|800|900)/,
+    },
+  ],
   theme: {
     extend: {
       colors: {

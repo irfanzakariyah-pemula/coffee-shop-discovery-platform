@@ -7,6 +7,43 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    /* Coffee Red Colors - Warm burgundy/maroon tones */
+    --color-coffee-50: #fdf2f2;
+    --color-coffee-100: #fce4e4;
+    --color-coffee-200: #facccc;
+    --color-coffee-300: #f5a3a3;
+    --color-coffee-400: #ed7171;
+    --color-coffee-500: #e04848;
+    --color-coffee-600: #c92a2a;
+    --color-coffee-700: #a61e1e;
+    --color-coffee-800: #891c1c;
+    --color-coffee-900: #721b1b;
+
+    /* Primary Orange - Burnt orange tones */
+    --color-primary-50: #fef5ee;
+    --color-primary-100: #fde8d7;
+    --color-primary-200: #fbcdae;
+    --color-primary-300: #f7aa7a;
+    --color-primary-400: #f27c44;
+    --color-primary-500: #ee5a1f;
+    --color-primary-600: #df3f15;
+    --color-primary-700: #b92e14;
+    --color-primary-800: #932618;
+    --color-primary-900: #772316;
+
+    /* Brown - Warm coffee brown */
+    --color-brown-50: #faf6f1;
+    --color-brown-100: #f2e9dc;
+    --color-brown-200: #e4d3b9;
+    --color-brown-300: #d1b38f;
+    --color-brown-400: #bc8f66;
+    --color-brown-500: #a8724a;
+    --color-brown-600: #8d5e3f;
+    --color-brown-700: #724a35;
+    --color-brown-800: #5d3e30;
+    --color-brown-900: #4d352a;
+
+    /* Fonts */
+    --font-sans: 'Inter var', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
