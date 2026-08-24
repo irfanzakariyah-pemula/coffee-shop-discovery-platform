@@ -191,13 +191,14 @@
 
 <!-- CTA Section -->
 <section class="relative py-24 overflow-hidden">
-    <!-- Gradient Background dengan Red Theme -->
-    <div class="absolute inset-0 bg-gradient-to-br from-coffee-600 via-coffee-700 to-coffee-900"></div>
+    <!-- Solid Glossy Red Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-red-800"></div>
     
-    <!-- Pattern Overlay -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    </div>
+    <!-- Glossy Shine Overlay untuk efek mengkilap -->
+    <div class="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10"></div>
+    
+    <!-- Subtle Radial Glow -->
+    <div class="absolute inset-0 bg-radial-gradient opacity-30" style="background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);"></div>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div class="animate-fade-in">
